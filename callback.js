@@ -5,13 +5,14 @@ const posts=[
 
 
 function getposts(){
-
-        let output = ''; 
-        posts.forEach((post)=>{
-            output+=`<li> ${post.title} Last Updated = ${(new Date().getTime() - post.CreatedAt)/1000} Sec ago</li>`;
-        });
+        setInterval(()=>{
+            let output = ''; 
+            posts.forEach((post)=>{
+            output+=`<li> ${post.title} Last Updated = ${(new Date().getTime() - post.CreatedAt)/1000} seconds ago</li>`;
+            });
         document.body.innerHTML=output;
-    
+        },1000)
+        
     }
 function createPost(post,callback){
     setTimeout(() => {
@@ -31,11 +32,3 @@ function create4thPost(post,callback){
 }
 create4thPost({title:'Post Four',body:'This is Post Four'},getposts);
 
-function getLastEditTime(){
-    
-    return time;
-}
-
-function getLastEditTime(){
-
-}
