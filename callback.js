@@ -7,9 +7,9 @@ const posts=[
 function getposts(){
 
         let output = ''; 
-        for(let i=0;i<posts.length;i++){
-            output+=`<li> ${posts[i].title} Last Updated = ${(new Date().getTime() - posts[i].CreatedAt)/1000} Sec ago</li>`;
-        }
+        posts.forEach((post)=>{
+            output+=`<li> ${post.title} Last Updated = ${(new Date().getTime() - post.CreatedAt)/1000} Sec ago</li>`;
+        });
         document.body.innerHTML=output;
     
     }
