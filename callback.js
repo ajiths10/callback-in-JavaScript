@@ -1,24 +1,21 @@
 const posts=[
-    {title:'Post One', body:'This is Post One'},
-    {title:'Post Two', body:'This is Post Two'}
+    {title:'Post One', body:'This is Post One',CreatedAt :new Date().getTime()},
+    {title:'Post Two', body:'This is Post Two',CreatedAt :new Date().getTime()}
 ];
 
 
 function getposts(){
-    setTimeout(() =>{
-        let output = '';
-        var nowTime = new Date();
-        let time = `${nowTime.getHours()} :  ${nowTime.getMinutes()} : ${nowTime.getSeconds()}`; 
-        posts.forEach((post,index)=>{
-            output+=`<li> ${post.title} Last edited = ${time} </li>`;
-        });
-        document.body.innerHTML=output;
-    },1000);
-}
 
+        let output = ''; 
+        for(let i=0;i<posts.length;i++){
+            output+=`<li> ${posts[i].title} Last Updated = ${(new Date().getTime() - posts[i].CreatedAt)/1000} Sec ago</li>`;
+        }
+        document.body.innerHTML=output;
+    
+    }
 function createPost(post,callback){
     setTimeout(() => {
-        posts.push(post);
+        posts.push({...post, CreatedAt: new Date().getTime()});
         callback();
     }, 2000);
 }
@@ -28,7 +25,7 @@ createPost({title:'Post Three',body:'This is Post Three'},getposts);
 
 function create4thPost(post,callback){
     setTimeout(() => {
-       posts.push(post);
+       posts.push({...post, CreatedAt: new Date().getTime()});
        callback(); 
     }, 4000);
 }
