@@ -3,11 +3,14 @@ const posts=[
     {title:'Post Two', body:'This is Post Two'}
 ];
 
+
 function getposts(){
     setTimeout(() =>{
         let output = '';
+        var nowTime = new Date();
+        let time = `${nowTime.getHours()} :  ${nowTime.getMinutes()} : ${nowTime.getSeconds()}`; 
         posts.forEach((post,index)=>{
-            output+=`<li> ${post.title}</li>`;
+            output+=`<li> ${post.title} Last edited = ${time} </li>`;
         });
         document.body.innerHTML=output;
     },1000);
@@ -30,3 +33,12 @@ function create4thPost(post,callback){
     }, 4000);
 }
 create4thPost({title:'Post Four',body:'This is Post Four'},getposts);
+
+function getLastEditTime(){
+    
+    return time;
+}
+
+function getLastEditTime(){
+
+}
