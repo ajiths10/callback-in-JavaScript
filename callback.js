@@ -21,5 +21,12 @@ function createPost(post,callback){
 }
 
 getposts();
+createPost({title:'Post Three',body:'This is Post Three'},getposts);
 
-createPost({title:'Post Four',body:'This is post four'},getposts);
+function create4thPost(post,callback){
+    setTimeout(() => {
+       posts.push(post);
+       callback(); 
+    }, 4000);
+}
+create4thPost({title:'Post Four',body:'This is Post Four'},getposts);
